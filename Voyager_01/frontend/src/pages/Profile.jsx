@@ -107,14 +107,14 @@ const Profile = ({ isOpen, onClose }) => {
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
           transition={{ type: "spring", damping: 25 }}
-          className="fixed top-0 right-0 h-full w-full max-w-sm bg-white shadow-lg z-50 p-5 overflow-y-auto"
+          className="fixed top-6 right-6 bottom-6 z-50 flex w-[min(92vw,34rem)] flex-col overflow-y-auto rounded-3xl border border-black/10 bg-white p-6 shadow-[0_24px_80px_rgba(15,23,42,0.22)]"
         >
           {/* header */}
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-gray-800">My Profile</h2>
             <button
               onClick={onClose}
-              className="text-gray-500 hover:text-red-500 p-1"
+              className="p-1 text-gray-500 transition rounded-full hover:text-red-500"
             >
               <FiX size={24} />
             </button>
@@ -123,13 +123,13 @@ const Profile = ({ isOpen, onClose }) => {
           {/* profile picture */}
           <div className="flex flex-col items-center mb-6">
             <label className="relative cursor-pointer group">
-              <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-gray-200 shadow-sm">
+              <div className="w-24 h-24 overflow-hidden border-2 border-gray-200 rounded-full shadow-sm sm:h-28 sm:w-28">
                 {preview ? (
-                  <img src={preview} alt="Preview" className="w-full h-full object-cover" />
+                  <img src={preview} alt="Preview" className="object-cover w-full h-full" />
                 ) : userDetails?.avatarUrl ? (
-                  <img src={userDetails?.avatarUrl} alt="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" className="w-full h-full object-cover" />
+                  <img src={userDetails?.avatarUrl} alt="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" className="object-cover w-full h-full" />
                 ) : (
-                  <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">
+                  <div className="flex items-center justify-center w-full h-full text-gray-400 bg-gray-100">
                     <FiUser size={32} />
                   </div>
                 )}
@@ -141,11 +141,11 @@ const Profile = ({ isOpen, onClose }) => {
             </label>
 
             {image && (
-              <div className="flex gap-2 mt-3">
+              <div className="flex gap-2 mt-4">
                 <button
                   onClick={handleImageUpload}
                   disabled={isLoading}
-                  className="px-3 py-1 text-sm bg-cyan-500 text-white rounded hover:bg-cyan-600 disabled:opacity-70"
+                  className="px-3 py-1 text-sm text-white rounded bg-cyan-500 hover:bg-cyan-600 disabled:opacity-70"
                 >
                   {isLoading ? "Uploading..." : "Save"}
                 </button>
@@ -154,7 +154,7 @@ const Profile = ({ isOpen, onClose }) => {
                     setImage(null);
                     setPreview("");
                   }}
-                  className="px-3 py-1 text-sm bg-gray-200 text-gray-700 rounded hover:bg-gray-300"
+                  className="px-3 py-1 text-sm text-gray-700 bg-gray-200 rounded hover:bg-gray-300"
                 >
                   Cancel
                 </button>
@@ -163,12 +163,12 @@ const Profile = ({ isOpen, onClose }) => {
           </div>
 
           {/* user info */}
-          <div className="space-y-4 mb-6">
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h3 className="font-medium text-gray-700 mb-3 flex items-center gap-2">
+          <div className="flex-1 mb-6 space-y-4">
+            <div className="p-4 rounded-2xl bg-gray-50">
+              <h3 className="flex items-center gap-2 mb-3 font-medium text-gray-700">
                 <FiUser className="text-cyan-500" /> Personal Information
               </h3>
-              <div className="space-y-3 pl-2">
+              <div className="pl-2 space-y-3">
                 <div>
                   <p className="text-xs text-gray-500">Name</p>
                   <p className="font-medium">{userDetails?.name || "..."}</p>
@@ -185,11 +185,11 @@ const Profile = ({ isOpen, onClose }) => {
             </div>
 
             {/* emergency contacts */}
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h3 className="font-medium text-gray-700 mb-3 flex items-center gap-2">
+            <div className="p-4 rounded-2xl bg-gray-50">
+              <h3 className="flex items-center gap-2 mb-3 font-medium text-gray-700">
                 🧑‍🤝‍🧑 Emergency Contacts
               </h3>
-              <div className="space-y-3 pl-2">
+              <div className="pl-2 space-y-3">
                 <div>
                   <p className="text-xs text-gray-500">Mom's Number</p>
                   <input
@@ -237,7 +237,7 @@ const Profile = ({ isOpen, onClose }) => {
                     localStorage.setItem("emergencyContacts", JSON.stringify(emergencyContacts));
                     toast.success("Emergency contacts saved!");
                   }}
-                  className="w-full py-2 bg-cyan-500 text-white rounded hover:bg-cyan-600 mt-2"
+                  className="w-full py-2 mt-2 text-white rounded bg-cyan-500 hover:bg-cyan-600"
                 >
                   Save Emergency Contacts
                 </button>
@@ -245,16 +245,16 @@ const Profile = ({ isOpen, onClose }) => {
             </div>
 
             {/* rewards */}
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h3 className="font-medium text-gray-700 mb-3 flex items-center gap-2">
+            <div className="p-4 rounded-2xl bg-gray-50">
+              <h3 className="flex items-center gap-2 mb-3 font-medium text-gray-700">
                 <FiStar className="text-amber-400" /> Rewards
               </h3>
-              <div className="flex justify-between items-center">
+              <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs text-gray-500">Points</p>
                   <p className="font-bold text-amber-500">120 pts</p>
                 </div>
-                <span className="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded-full">
+                <span className="px-2 py-1 text-xs rounded-full bg-amber-100 text-amber-800">
                   Silver Tier
                 </span>
               </div>
@@ -262,10 +262,10 @@ const Profile = ({ isOpen, onClose }) => {
           </div>
 
           {/* actions */}
-          <div className="space-y-3 mb-6">
+          <div className="pb-1 space-y-3">
             <button
               onClick={() => toast.success("Thanks for your feedback! +10 points")}
-              className="w-full py-2 bg-amber-100 text-amber-700 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-amber-200"
+              className="flex items-center justify-center w-full gap-2 py-2 font-medium rounded-lg bg-amber-100 text-amber-700 hover:bg-amber-200"
             >
               <FiStar /> Give Feedback
             </button>
@@ -275,7 +275,7 @@ const Profile = ({ isOpen, onClose }) => {
                 setProfileOpen(false);
               }}
               disabled={isLoading}
-              className="w-full py-2 bg-gray-100 text-gray-700 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-gray-200 disabled:opacity-70"
+              className="flex items-center justify-center w-full gap-2 py-2 font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 disabled:opacity-70"
             >
               <FiLogOut /> {isLoading ? "Signing Out..." : "Sign Out"}
             </button>

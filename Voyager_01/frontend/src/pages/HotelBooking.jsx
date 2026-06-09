@@ -686,16 +686,16 @@ export default function HotelBooking() {
               "/placeholder.svg?height=400&width=600&text=Hotel+Image"
             }
             alt={`${hotel.name} main view`}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent" />
-          <div className="absolute bottom-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+          <div className="absolute px-3 py-1 text-sm text-white rounded-full bottom-4 right-4 bg-black/50">
             {currentImages.length} photos
           </div>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex space-x-1 bg-gray-100 p-1 rounded-lg overflow-x-auto">
+        <div className="flex p-1 space-x-1 overflow-x-auto bg-gray-100 rounded-lg">
           {categories.map((category) => (
             <button
               key={category.id}
@@ -715,7 +715,7 @@ export default function HotelBooking() {
         </div>
 
         {/* Thumbnail Grid */}
-        <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
+        <div className="grid grid-cols-4 gap-2 md:grid-cols-6">
           {currentImages.slice(0, 12).map((img, idx) => (
             <div
               key={idx}
@@ -729,12 +729,12 @@ export default function HotelBooking() {
               <img
                 src={img || "/placeholder.svg"}
                 alt={`${activeGalleryCategory} ${idx + 1}`}
-                className="h-full w-full object-cover"
+                className="object-cover w-full h-full"
               />
             </div>
           ))}
           {currentImages.length > 12 && (
-            <div className="aspect-square bg-gray-100 rounded-md flex items-center justify-center text-gray-500 text-sm font-medium">
+            <div className="flex items-center justify-center text-sm font-medium text-gray-500 bg-gray-100 rounded-md aspect-square">
               +{currentImages.length - 12} more
             </div>
           )}
@@ -1126,14 +1126,14 @@ export default function HotelBooking() {
   };
 
   return (
-    <div className="bg-blue-50 min-h-screen mt-10 p-10">
+    <div className="bg-[#ebebeb] min-h-screen mt-10 p-10">
       <ToastContainer />
-      <div className="container mx-auto py-6 space-y-8">
+      <div className="container py-6 mx-auto space-y-8">
         <header className="space-y-2 text-center">
-          <h1 className="h-12 flex items-center justify-center rounded-xl bg-blue-800 text-3xl font-bold tracking-tight text-white shadow-md">
+          <h1 className="flex items-center justify-center h-12 text-3xl font-bold tracking-tight text-white bg-blue-800 shadow-md rounded-xl">
             Find Your Perfect Stay
           </h1>
-          <p className="rounded-lg bg-blue-200 py-2 text-black">
+          <p className="py-2 text-black bg-blue-200 rounded-lg">
             Search for hotels, compare prices, and book your ideal
             accommodation.
           </p>
@@ -1141,7 +1141,7 @@ export default function HotelBooking() {
 
         {paymentError && (
           <div className="flex justify-center">
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative max-w-xl w-full text-center">
+            <div className="relative w-full max-w-xl px-4 py-3 text-center text-red-700 bg-red-100 border border-red-400 rounded">
               <strong className="font-bold">Payment Failed!</strong>
               <span className="block">{paymentError}</span>
             </div>
@@ -1150,13 +1150,13 @@ export default function HotelBooking() {
 
         <div className="grid gap-6 md:grid-cols-[300px_1fr]">
           <aside className="space-y-6">
-            <div className="space-y-4 rounded-lg border bg-white p-4 shadow-sm">
+            <div className="p-4 space-y-4 bg-white border rounded-lg shadow-sm">
               <div className="space-y-2">
                 <h3 className="font-medium">Search</h3>
                 <input
                   type="search"
                   placeholder="Destination, hotel name..."
-                  className="w-full rounded-md border px-3 py-2"
+                  className="w-full px-3 py-2 border rounded-md"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -1167,7 +1167,7 @@ export default function HotelBooking() {
                 <div className="grid gap-2">
                   <input
                     type="date"
-                    className="w-full rounded-md border px-3 py-2"
+                    className="w-full px-3 py-2 border rounded-md"
                     value={checkInDate}
                     min={new Date().toISOString().split("T")[0]}
                     onChange={(e) => {
@@ -1180,7 +1180,7 @@ export default function HotelBooking() {
                   />
                   <input
                     type="date"
-                    className="w-full rounded-md border px-3 py-2"
+                    className="w-full px-3 py-2 border rounded-md"
                     value={checkOutDate}
                     min={checkInDate || new Date().toISOString().split("T")[0]}
                     onChange={(e) => setCheckOutDate(e.target.value)}
@@ -1191,7 +1191,7 @@ export default function HotelBooking() {
               <div className="space-y-2">
                 <h3 className="font-medium">Room Type</h3>
                 <select
-                  className="w-full rounded-md border px-3 py-2"
+                  className="w-full px-3 py-2 border rounded-md"
                   value={roomType}
                   onChange={(e) => setRoomType(e.target.value)}
                 >
@@ -1204,7 +1204,7 @@ export default function HotelBooking() {
               <div className="space-y-2">
                 <h3 className="font-medium">Number of Rooms</h3>
                 <select
-                  className="w-full rounded-md border px-3 py-2"
+                  className="w-full px-3 py-2 border rounded-md"
                   value={sidebarRooms || 1}
                   onChange={(e) => setSidebarRooms(Number(e.target.value))}
                 >
@@ -1269,7 +1269,7 @@ export default function HotelBooking() {
                 <button
                   onClick={applyClientSideFilters}
                   disabled={loading}
-                  className="w-full rounded-md py-2 px-4 font-medium text-gray-600 border border-gray-300 hover:bg-gray-50 transition-colors text-sm"
+                  className="w-full px-4 py-2 text-sm font-medium text-gray-600 transition-colors border border-gray-300 rounded-md hover:bg-gray-50"
                 >
                   Basic Filter (No API)
                 </button>
@@ -1283,7 +1283,7 @@ export default function HotelBooking() {
                     setAvailabilityChecked(false);
                     toast.info("Showing all hotels");
                   }}
-                  className="w-full rounded-md py-2 px-4 font-medium text-gray-600 border border-gray-300 hover:bg-gray-50 transition-colors"
+                  className="w-full px-4 py-2 font-medium text-gray-600 transition-colors border border-gray-300 rounded-md hover:bg-gray-50"
                 >
                   Show All Hotels
                 </button>
@@ -1293,17 +1293,17 @@ export default function HotelBooking() {
 
           <main className="space-y-6">
             {loading && (
-              <div className="flex justify-center items-center py-8">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+              <div className="flex items-center justify-center py-8">
+                <div className="w-8 h-8 border-b-2 border-blue-600 rounded-full animate-spin"></div>
                 <span className="ml-2 text-gray-600">Loading...</span>
               </div>
             )}
 
             {selectedHotel ? (
               <section className="space-y-6">
-                <div className="overflow-hidden rounded-lg border bg-white shadow-sm">
+                <div className="overflow-hidden bg-white border rounded-lg shadow-sm">
                   {/* Header with back button and rating */}
-                  <div className="flex items-center justify-between border-b p-4">
+                  <div className="flex items-center justify-between p-4 border-b">
                     <button
                       onClick={handleBackToResults}
                       className="text-blue-600 hover:underline"
@@ -1316,18 +1316,18 @@ export default function HotelBooking() {
                   </div>
 
                   {/* Hotel Title and Location */}
-                  <div className="space-y-1 p-4 border-b">
+                  <div className="p-4 space-y-1 border-b">
                     <h2 className="text-2xl font-bold tracking-tight">
                       {selectedHotel.name}
                     </h2>
                     <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <MapPin className="h-4 w-4" />
+                      <MapPin className="w-4 h-4" />
                       <span>{selectedHotel.location}</span>
                       <a
                         href={getGoogleMapsLink(selectedHotel)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline flex items-center gap-1"
+                        className="flex items-center gap-1 text-blue-600 hover:underline"
                       >
                         (View on Map)
                       </a>
@@ -1336,7 +1336,7 @@ export default function HotelBooking() {
 
                   {/* Tab Navigation */}
                   <div className="border-b">
-                    <nav className="flex space-x-8 px-4">
+                    <nav className="flex px-4 space-x-8">
                       {[
                         { id: "overview", label: "Overview" },
                         { id: "rooms", label: "Rooms" },
@@ -1374,7 +1374,7 @@ export default function HotelBooking() {
                           <h3 className="text-xl font-semibold text-gray-800">
                             About This Hotel
                           </h3>
-                          <p className="text-gray-600 leading-relaxed">
+                          <p className="leading-relaxed text-gray-600">
                             {selectedHotel.description ||
                               "Experience luxury and comfort at this exceptional hotel."}
                           </p>
@@ -1382,12 +1382,12 @@ export default function HotelBooking() {
                           {/* Hotel Features */}
                           {selectedHotel.features &&
                             selectedHotel.features.length > 0 && (
-                              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                              <div className="grid grid-cols-2 gap-4 mt-4 md:grid-cols-4">
                                 {selectedHotel.features.map(
                                   (feature, index) => (
                                     <div
                                       key={index}
-                                      className="text-center p-3 bg-blue-50 rounded-lg"
+                                      className="p-3 text-center rounded-lg bg-blue-50"
                                     >
                                       <div className="text-sm font-medium text-gray-700">
                                         {feature}
@@ -1405,12 +1405,12 @@ export default function HotelBooking() {
                             <h3 className="text-xl font-semibold text-gray-800">
                               Nearby Attractions
                             </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                               {getNearbyAttractions(selectedHotel).map(
                                 (attraction, index) => (
                                   <div
                                     key={index}
-                                    className="bg-gray-50 p-4 rounded-lg border hover:shadow-md transition-shadow"
+                                    className="p-4 transition-shadow border rounded-lg bg-gray-50 hover:shadow-md"
                                   >
                                     <div className="flex items-start gap-3">
                                       <div className="flex-1">
@@ -1451,16 +1451,16 @@ export default function HotelBooking() {
                               {/* Airports */}
                               {transport.airports.length > 0 && (
                                 <div>
-                                  <h4 className="font-medium text-gray-700 mb-3 flex items-center gap-2">
+                                  <h4 className="flex items-center gap-2 mb-3 font-medium text-gray-700">
                                     <span className="text-lg">✈️</span>
                                     Airports
                                   </h4>
-                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                  <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                                     {transport.airports.map(
                                       (airport, index) => (
                                         <div
                                           key={index}
-                                          className="bg-blue-50 p-3 rounded-lg border"
+                                          className="p-3 border rounded-lg bg-blue-50"
                                         >
                                           <div className="flex items-center justify-between mb-2">
                                             <div className="font-medium text-gray-800">
@@ -1470,10 +1470,10 @@ export default function HotelBooking() {
                                               {airport.distance}
                                             </div>
                                           </div>
-                                          <div className="text-sm text-gray-600 mb-1">
+                                          <div className="mb-1 text-sm text-gray-600">
                                             Travel time: {airport.travel_time}
                                           </div>
-                                          <div className="text-sm text-gray-600 mb-1">
+                                          <div className="mb-1 text-sm text-gray-600">
                                             Cost: {airport.cost}
                                           </div>
                                           <div className="flex flex-wrap gap-1">
@@ -1481,7 +1481,7 @@ export default function HotelBooking() {
                                               (mode, idx) => (
                                                 <span
                                                   key={idx}
-                                                  className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded"
+                                                  className="px-2 py-1 text-xs text-blue-800 bg-blue-100 rounded"
                                                 >
                                                   {mode}
                                                 </span>
@@ -1498,16 +1498,16 @@ export default function HotelBooking() {
                               {/* Railways */}
                               {transport.railways.length > 0 && (
                                 <div>
-                                  <h4 className="font-medium text-gray-700 mb-3 flex items-center gap-2">
+                                  <h4 className="flex items-center gap-2 mb-3 font-medium text-gray-700">
                                     <span className="text-lg">🚂</span>
                                     Railway Stations
                                   </h4>
-                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                  <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                                     {transport.railways.map(
                                       (station, index) => (
                                         <div
                                           key={index}
-                                          className="bg-green-50 p-3 rounded-lg border"
+                                          className="p-3 border rounded-lg bg-green-50"
                                         >
                                           <div className="flex items-center justify-between mb-2">
                                             <div className="font-medium text-gray-800">
@@ -1517,10 +1517,10 @@ export default function HotelBooking() {
                                               {station.distance}
                                             </div>
                                           </div>
-                                          <div className="text-sm text-gray-600 mb-1">
+                                          <div className="mb-1 text-sm text-gray-600">
                                             Travel time: {station.travel_time}
                                           </div>
-                                          <div className="text-sm text-gray-600 mb-1">
+                                          <div className="mb-1 text-sm text-gray-600">
                                             Cost: {station.cost}
                                           </div>
                                           <div className="flex flex-wrap gap-1">
@@ -1528,7 +1528,7 @@ export default function HotelBooking() {
                                               (mode, idx) => (
                                                 <span
                                                   key={idx}
-                                                  className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded"
+                                                  className="px-2 py-1 text-xs text-green-800 bg-green-100 rounded"
                                                 >
                                                   {mode}
                                                 </span>
@@ -1545,16 +1545,16 @@ export default function HotelBooking() {
                               {/* Bus Stations */}
                               {transport.busStations.length > 0 && (
                                 <div>
-                                  <h4 className="font-medium text-gray-700 mb-3 flex items-center gap-2">
+                                  <h4 className="flex items-center gap-2 mb-3 font-medium text-gray-700">
                                     <span className="text-lg">🚌</span>
                                     Bus Stations
                                   </h4>
-                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                  <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                                     {transport.busStations.map(
                                       (station, index) => (
                                         <div
                                           key={index}
-                                          className="bg-yellow-50 p-3 rounded-lg border"
+                                          className="p-3 border rounded-lg bg-yellow-50"
                                         >
                                           <div className="flex items-center justify-between mb-2">
                                             <div className="font-medium text-gray-800">
@@ -1564,10 +1564,10 @@ export default function HotelBooking() {
                                               {station.distance}
                                             </div>
                                           </div>
-                                          <div className="text-sm text-gray-600 mb-1">
+                                          <div className="mb-1 text-sm text-gray-600">
                                             Travel time: {station.travel_time}
                                           </div>
-                                          <div className="text-sm text-gray-600 mb-1">
+                                          <div className="mb-1 text-sm text-gray-600">
                                             Cost: {station.cost}
                                           </div>
                                           <div className="flex flex-wrap gap-1">
@@ -1575,7 +1575,7 @@ export default function HotelBooking() {
                                               (mode, idx) => (
                                                 <span
                                                   key={idx}
-                                                  className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded"
+                                                  className="px-2 py-1 text-xs text-yellow-800 bg-yellow-100 rounded"
                                                 >
                                                   {mode}
                                                 </span>
@@ -1592,15 +1592,15 @@ export default function HotelBooking() {
                               {/* Ports */}
                               {transport.ports.length > 0 && (
                                 <div>
-                                  <h4 className="font-medium text-gray-700 mb-3 flex items-center gap-2">
+                                  <h4 className="flex items-center gap-2 mb-3 font-medium text-gray-700">
                                     <span className="text-lg">🚢</span>
                                     Ports
                                   </h4>
-                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                  <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                                     {transport.ports.map((port, index) => (
                                       <div
                                         key={index}
-                                        className="bg-cyan-50 p-3 rounded-lg border"
+                                        className="p-3 border rounded-lg bg-cyan-50"
                                       >
                                         <div className="flex items-center justify-between mb-2">
                                           <div className="font-medium text-gray-800">
@@ -1610,10 +1610,10 @@ export default function HotelBooking() {
                                             {port.distance}
                                           </div>
                                         </div>
-                                        <div className="text-sm text-gray-600 mb-1">
+                                        <div className="mb-1 text-sm text-gray-600">
                                           Travel time: {port.travel_time}
                                         </div>
-                                        <div className="text-sm text-gray-600 mb-1">
+                                        <div className="mb-1 text-sm text-gray-600">
                                           Cost: {port.cost}
                                         </div>
                                         <div className="flex flex-wrap gap-1">
@@ -1621,7 +1621,7 @@ export default function HotelBooking() {
                                             (mode, idx) => (
                                               <span
                                                 key={idx}
-                                                className="text-xs bg-cyan-100 text-cyan-800 px-2 py-1 rounded"
+                                                className="px-2 py-1 text-xs rounded bg-cyan-100 text-cyan-800"
                                               >
                                                 {mode}
                                               </span>
@@ -1637,23 +1637,23 @@ export default function HotelBooking() {
                               {/* Local Transport */}
                               {transport.localTransport.length > 0 && (
                                 <div>
-                                  <h4 className="font-medium text-gray-700 mb-3 flex items-center gap-2">
+                                  <h4 className="flex items-center gap-2 mb-3 font-medium text-gray-700">
                                     <span className="text-lg">🚕</span>
                                     Local Transportation
                                   </h4>
-                                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                  <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
                                     {transport.localTransport.map(
                                       (option, index) => (
                                         <div
                                           key={index}
-                                          className="bg-purple-50 p-3 rounded-lg border"
+                                          className="p-3 border rounded-lg bg-purple-50"
                                         >
                                           <div className="flex items-center justify-between mb-2">
                                             <div className="font-medium text-gray-800">
                                               {option.name}
                                             </div>
                                           </div>
-                                          <div className="text-sm text-gray-600 mb-1">
+                                          <div className="mb-1 text-sm text-gray-600">
                                             Distance: {option.distance}
                                           </div>
                                           <div className="flex flex-wrap gap-1">
@@ -1661,7 +1661,7 @@ export default function HotelBooking() {
                                               (mode, idx) => (
                                                 <span
                                                   key={idx}
-                                                  className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded"
+                                                  className="px-2 py-1 text-xs text-purple-800 bg-purple-100 rounded"
                                                 >
                                                   {mode}
                                                 </span>
@@ -1685,14 +1685,14 @@ export default function HotelBooking() {
                               <h3 className="text-xl font-semibold text-gray-800">
                                 Contact Information
                               </h3>
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                                 {selectedHotel.contact_info.map(
                                   (contact, index) => (
                                     <div
                                       key={index}
                                       className="flex items-center gap-3"
                                     >
-                                      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                      <div className="flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full">
                                         <span className="text-blue-600">
                                           {contact.contact_type === "phone"
                                             ? "📞"
@@ -1731,7 +1731,7 @@ export default function HotelBooking() {
                                 : "border-gray-200 hover:border-gray-300"
                             }`}
                           >
-                            <div className="flex justify-between items-start mb-2">
+                            <div className="flex items-start justify-between mb-2">
                               <h4 className="font-semibold text-gray-800">
                                 {room.type} Room
                               </h4>
@@ -1745,14 +1745,14 @@ export default function HotelBooking() {
                                 </span>
                               </div>
                             </div>
-                            <p className="text-sm text-gray-600 mb-3">
+                            <p className="mb-3 text-sm text-gray-600">
                               {room.description ||
                                 `Comfortable ${room.type.toLowerCase()} accommodation.`}
                             </p>
 
                             {/* Room Features */}
                             {room.features && room.features.length > 0 && (
-                              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-gray-600 mb-3">
+                              <div className="grid grid-cols-2 gap-2 mb-3 text-xs text-gray-600 md:grid-cols-4">
                                 {room.features.map((feature, idx) => (
                                   <div
                                     key={idx}
@@ -1783,17 +1783,17 @@ export default function HotelBooking() {
                         ))}
 
                         {/* Booking Form */}
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-medium mb-4">Book Your Stay</h4>
+                        <div className="p-4 rounded-lg bg-gray-50">
+                          <h4 className="mb-4 font-medium">Book Your Stay</h4>
                           <div className="space-y-4">
                             <div className="grid gap-4 md:grid-cols-2">
                               <div>
-                                <label className="mb-1 block font-medium">
+                                <label className="block mb-1 font-medium">
                                   Check‑in
                                 </label>
                                 <input
                                   type="date"
-                                  className="w-full rounded-md border px-3 py-2"
+                                  className="w-full px-3 py-2 border rounded-md"
                                   value={checkInDate}
                                   onChange={(e) =>
                                     setCheckInDate(e.target.value)
@@ -1801,12 +1801,12 @@ export default function HotelBooking() {
                                 />
                               </div>
                               <div>
-                                <label className="mb-1 block font-medium">
+                                <label className="block mb-1 font-medium">
                                   Check‑out
                                 </label>
                                 <input
                                   type="date"
-                                  className="w-full rounded-md border px-3 py-2"
+                                  className="w-full px-3 py-2 border rounded-md"
                                   value={checkOutDate}
                                   onChange={(e) =>
                                     setCheckOutDate(e.target.value)
@@ -1816,11 +1816,11 @@ export default function HotelBooking() {
                             </div>
 
                             <div>
-                              <label className="mb-1 block font-medium">
+                              <label className="block mb-1 font-medium">
                                 Number of Rooms
                               </label>
                               <select
-                                className="w-full rounded-md border px-3 py-2"
+                                className="w-full px-3 py-2 border rounded-md"
                                 value={rooms}
                                 onChange={(e) =>
                                   setRooms(Number(e.target.value))
@@ -1835,7 +1835,7 @@ export default function HotelBooking() {
                             </div>
 
                             <div>
-                              <label className="mb-1 block font-medium">
+                              <label className="block mb-1 font-medium">
                                 Special Requests
                               </label>
                               <textarea
@@ -1845,7 +1845,7 @@ export default function HotelBooking() {
                             </div>
 
                             {/* Price Summary */}
-                            <div className="space-y-4 border-t pt-4">
+                            <div className="pt-4 space-y-4 border-t">
                               <h4 className="font-medium">Price Summary</h4>
                               <div className="space-y-1 text-sm">
                                 <div className="flex justify-between">
@@ -1888,7 +1888,7 @@ export default function HotelBooking() {
 
                             <button
                               onClick={handleBooking}
-                              className="w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+                              className="w-full px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700"
                             >
                               Book Now
                             </button>
@@ -1903,9 +1903,9 @@ export default function HotelBooking() {
                         <h3 className="text-xl font-semibold text-gray-800">
                           Hotel Amenities
                         </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                           <div>
-                            <h4 className="font-medium text-gray-700 mb-3">
+                            <h4 className="mb-3 font-medium text-gray-700">
                               General Facilities
                             </h4>
                             <div className="space-y-2">
@@ -1924,7 +1924,7 @@ export default function HotelBooking() {
                             </div>
                           </div>
                           <div>
-                            <h4 className="font-medium text-gray-700 mb-3">
+                            <h4 className="mb-3 font-medium text-gray-700">
                               Business & Recreation
                             </h4>
                             <div className="space-y-2">
@@ -1945,12 +1945,12 @@ export default function HotelBooking() {
                         </div>
 
                         {/* Amenity Categories */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h4 className="font-medium text-blue-800 mb-2">
+                        <div className="grid grid-cols-1 gap-4 mt-6 md:grid-cols-3">
+                          <div className="p-4 rounded-lg bg-blue-50">
+                            <h4 className="mb-2 font-medium text-blue-800">
                               🏊‍♂️ Recreation
                             </h4>
-                            <ul className="text-sm text-blue-700 space-y-1">
+                            <ul className="space-y-1 text-sm text-blue-700">
                               {(selectedHotel.amenities?.recreation || []).map(
                                 (amenity, index) => (
                                   <li key={index}>{amenity}</li>
@@ -1958,11 +1958,11 @@ export default function HotelBooking() {
                               )}
                             </ul>
                           </div>
-                          <div className="bg-green-50 p-4 rounded-lg">
-                            <h4 className="font-medium text-green-800 mb-2">
+                          <div className="p-4 rounded-lg bg-green-50">
+                            <h4 className="mb-2 font-medium text-green-800">
                               🍽️ Dining
                             </h4>
-                            <ul className="text-sm text-green-700 space-y-1">
+                            <ul className="space-y-1 text-sm text-green-700">
                               {(selectedHotel.amenities?.dining || []).map(
                                 (amenity, index) => (
                                   <li key={index}>{amenity}</li>
@@ -1970,11 +1970,11 @@ export default function HotelBooking() {
                               )}
                             </ul>
                           </div>
-                          <div className="bg-purple-50 p-4 rounded-lg">
-                            <h4 className="font-medium text-purple-800 mb-2">
+                          <div className="p-4 rounded-lg bg-purple-50">
+                            <h4 className="mb-2 font-medium text-purple-800">
                               💼 Business
                             </h4>
-                            <ul className="text-sm text-purple-700 space-y-1">
+                            <ul className="space-y-1 text-sm text-purple-700">
                               {(selectedHotel.amenities?.business || []).map(
                                 (amenity, index) => (
                                   <li key={index}>{amenity}</li>
@@ -2018,14 +2018,14 @@ export default function HotelBooking() {
 
                           <button
                             onClick={() => setShowReviewForm(!showReviewForm)}
-                            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                            className="px-4 py-2 text-white transition-colors bg-blue-600 rounded-md hover:bg-blue-700"
                           >
                             {showReviewForm ? "Cancel" : "Write a Review"}
                           </button>
                         </div>
 
                         {reviewSubmitted && (
-                          <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
+                          <div className="px-4 py-3 text-green-800 border border-green-200 rounded-lg bg-green-50">
                             <div className="flex items-center gap-2">
                               <span className="text-green-600">✓</span>
                               <span>
@@ -2038,8 +2038,8 @@ export default function HotelBooking() {
 
                         {/* Review Form */}
                         {showReviewForm && (
-                          <div className="bg-gray-50 p-6 rounded-lg border">
-                            <h4 className="text-lg font-semibold text-gray-800 mb-4">
+                          <div className="p-6 border rounded-lg bg-gray-50">
+                            <h4 className="mb-4 text-lg font-semibold text-gray-800">
                               Share Your Experience
                             </h4>
                             <form
@@ -2047,7 +2047,7 @@ export default function HotelBooking() {
                               className="space-y-4"
                             >
                               <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block mb-2 text-sm font-medium text-gray-700">
                                   Overall Rating
                                 </label>
                                 <div className="flex items-center gap-2">
@@ -2078,7 +2078,7 @@ export default function HotelBooking() {
                               </div>
 
                               <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block mb-2 text-sm font-medium text-gray-700">
                                   Review Title
                                 </label>
                                 <input
@@ -2094,13 +2094,13 @@ export default function HotelBooking() {
                                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                   maxLength={100}
                                 />
-                                <div className="text-xs text-gray-500 mt-1">
+                                <div className="mt-1 text-xs text-gray-500">
                                   {newReview.title.length}/100 characters
                                 </div>
                               </div>
 
                               <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block mb-2 text-sm font-medium text-gray-700">
                                   Your Review
                                 </label>
                                 <textarea
@@ -2116,7 +2116,7 @@ export default function HotelBooking() {
                                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                   maxLength={500}
                                 />
-                                <div className="text-xs text-gray-500 mt-1">
+                                <div className="mt-1 text-xs text-gray-500">
                                   {newReview.comment.length}/500 characters
                                 </div>
                               </div>
@@ -2124,7 +2124,7 @@ export default function HotelBooking() {
                               <div className="flex gap-3">
                                 <button
                                   type="submit"
-                                  className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                                  className="px-6 py-2 text-white transition-colors bg-blue-600 rounded-md hover:bg-blue-700"
                                 >
                                   Submit Review
                                 </button>
@@ -2138,7 +2138,7 @@ export default function HotelBooking() {
                                       comment: "",
                                     });
                                   }}
-                                  className="bg-gray-300 text-gray-700 px-6 py-2 rounded-md hover:bg-gray-400 transition-colors"
+                                  className="px-6 py-2 text-gray-700 transition-colors bg-gray-300 rounded-md hover:bg-gray-400"
                                 >
                                   Cancel
                                 </button>
@@ -2169,12 +2169,12 @@ export default function HotelBooking() {
                                       "Great Stay"}
                                   </div>
                                   {review.verified && (
-                                    <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
+                                    <span className="px-2 py-1 text-xs text-green-800 bg-green-100 rounded-full">
                                       Verified Stay
                                     </span>
                                   )}
                                   {review.date === "Just now" && (
-                                    <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full animate-pulse">
+                                    <span className="px-2 py-1 text-xs text-blue-800 bg-blue-100 rounded-full animate-pulse">
                                       New
                                     </span>
                                   )}
@@ -2194,7 +2194,7 @@ export default function HotelBooking() {
                                   ))}
                                 </div>
                               </div>
-                              <p className="text-sm text-gray-600 mb-2">
+                              <p className="mb-2 text-sm text-gray-600">
                                 {review.comment}
                               </p>
                               <div className="flex items-center justify-between">
@@ -2203,7 +2203,7 @@ export default function HotelBooking() {
                                   {review.date}
                                 </div>
                                 {review.date === "Just now" && (
-                                  <div className="text-xs text-blue-600 font-medium">
+                                  <div className="text-xs font-medium text-blue-600">
                                     Your review
                                   </div>
                                 )}
@@ -2213,8 +2213,8 @@ export default function HotelBooking() {
                         </div>
 
                         {reviews.length === 0 && (
-                          <div className="text-center py-8 text-gray-500">
-                            <div className="text-4xl mb-2">📝</div>
+                          <div className="py-8 text-center text-gray-500">
+                            <div className="mb-2 text-4xl">📝</div>
                             <p>
                               No reviews yet. Be the first to share your
                               experience!
@@ -2235,9 +2235,9 @@ export default function HotelBooking() {
                         selectedHotel.policy.length > 0 ? (
                           selectedHotel.policy.map((policy, index) => (
                             <div key={index} className="space-y-6">
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                                 <div>
-                                  <h4 className="font-medium text-gray-700 mb-3">
+                                  <h4 className="mb-3 font-medium text-gray-700">
                                     Check-in/Check-out
                                   </h4>
                                   <div className="space-y-2 text-sm text-gray-600">
@@ -2270,7 +2270,7 @@ export default function HotelBooking() {
                                   </div>
                                 </div>
                                 <div>
-                                  <h4 className="font-medium text-gray-700 mb-3">
+                                  <h4 className="mb-3 font-medium text-gray-700">
                                     Cancellation Policy
                                   </h4>
                                   <div className="space-y-2 text-sm text-gray-600">
@@ -2303,10 +2303,10 @@ export default function HotelBooking() {
                               {policy.important_info &&
                                 policy.important_info.length > 0 && (
                                   <div>
-                                    <h4 className="font-medium text-gray-700 mb-3">
+                                    <h4 className="mb-3 font-medium text-gray-700">
                                       Important Information
                                     </h4>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+                                    <div className="grid grid-cols-1 gap-4 text-sm text-gray-600 md:grid-cols-2">
                                       {policy.important_info.map(
                                         (info, idx) => (
                                           <div key={idx}>• {info}</div>
@@ -2319,11 +2319,11 @@ export default function HotelBooking() {
                               {policy.House_rules &&
                                 policy.House_rules.length > 0 && (
                                   <div>
-                                    <h4 className="font-medium text-gray-700 mb-3">
+                                    <h4 className="mb-3 font-medium text-gray-700">
                                       House Rules
                                     </h4>
-                                    <div className="bg-yellow-50 p-4 rounded-lg">
-                                      <ul className="text-sm text-gray-700 space-y-1">
+                                    <div className="p-4 rounded-lg bg-yellow-50">
+                                      <ul className="space-y-1 text-sm text-gray-700">
                                         {policy.House_rules.map((rule, idx) => (
                                           <li key={idx}>• {rule}</li>
                                         ))}
@@ -2335,7 +2335,7 @@ export default function HotelBooking() {
                               {policy.payment_info &&
                                 policy.payment_info.length > 0 && (
                                   <div>
-                                    <h4 className="font-medium text-gray-700 mb-3">
+                                    <h4 className="mb-3 font-medium text-gray-700">
                                       Payment Information
                                     </h4>
                                     <div className="space-y-2 text-sm text-gray-600">
@@ -2348,7 +2348,7 @@ export default function HotelBooking() {
                             </div>
                           ))
                         ) : (
-                          <div className="text-center py-8 text-gray-500">
+                          <div className="py-8 text-center text-gray-500">
                             <p>
                               No policy information available for this hotel.
                             </p>
@@ -2371,29 +2371,29 @@ export default function HotelBooking() {
 
                     <div className="flex justify-between gap-4">
                       <button
-                        className="rounded border border-gray-300 bg-white px-6 py-2 text-gray-700 transition-colors hover:bg-gray-50"
+                        className="px-6 py-2 text-gray-700 transition-colors bg-white border border-gray-300 rounded hover:bg-gray-50"
                         onClick={() => setShowGameSelector(false)}
                       >
                         Back to Booking
                       </button>
                       {!paymentSuccess && !showPaymentSimButtons && (
                         <button
-                          className="w-full rounded-md bg-green-600 py-2 px-4 font-medium text-white hover:bg-green-700"
+                          className="w-full px-4 py-2 font-medium text-white bg-green-600 rounded-md hover:bg-green-700"
                           onClick={() => loadRazorpay(selectedHotel)}
                         >
                           Finalize Booking (Rs{calculateFinalPrice()})
                         </button>
                       )}
                       {showPaymentSimButtons && (
-                        <div className="flex gap-4 justify-center mt-4">
+                        <div className="flex justify-center gap-4 mt-4">
                           <button
-                            className="rounded-md bg-green-600 py-2 px-4 font-medium text-white hover:bg-green-700"
+                            className="px-4 py-2 font-medium text-white bg-green-600 rounded-md hover:bg-green-700"
                             onClick={handleSimulateYes}
                           >
                             Yes
                           </button>
                           <button
-                            className="rounded-md bg-red-600 py-2 px-4 font-medium text-white hover:bg-red-700"
+                            className="px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-700"
                             onClick={handleSimulateNo}
                           >
                             No
@@ -2403,13 +2403,13 @@ export default function HotelBooking() {
                       {paymentSuccess && !showPaymentSimButtons && (
                         <>
                           <button
-                            className="w-full rounded-md bg-gray-400 py-2 px-4 font-medium text-white cursor-not-allowed mb-2"
+                            className="w-full px-4 py-2 mb-2 font-medium text-white bg-gray-400 rounded-md cursor-not-allowed"
                             disabled
                           >
                             Paid Successfully
                           </button>
                           <button
-                            className="w-full rounded-md bg-blue-600 py-2 px-4 font-medium text-white hover:bg-blue-700"
+                            className="w-full px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
                             onClick={generateReceipt}
                           >
                             Download Receipt
@@ -2427,12 +2427,12 @@ export default function HotelBooking() {
                     {filteredHotels.length} hotel
                     {filteredHotels.length !== 1 && "s"} found
                     {availabilityChecked && (
-                      <span className="text-sm text-gray-500 ml-2">
+                      <span className="ml-2 text-sm text-gray-500">
                         (Filtered by availability)
                       </span>
                     )}
                   </h2>
-                  <select className="rounded-md border px-3 py-2">
+                  <select className="px-3 py-2 border rounded-md">
                     <option value="recommended">Recommended</option>
                     <option value="price-low">Price: Low to High</option>
                     <option value="price-high">Price: High to Low</option>
@@ -2451,12 +2451,12 @@ export default function HotelBooking() {
                 </div>
 
                 {filteredHotels.length === 0 && !loading && (
-                  <div className="text-center py-12">
-                    <div className="text-6xl mb-4">🏨</div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  <div className="py-12 text-center">
+                    <div className="mb-4 text-6xl">🏨</div>
+                    <h3 className="mb-2 text-xl font-semibold text-gray-800">
                       No hotels found
                     </h3>
-                    <p className="text-gray-600 mb-4">
+                    <p className="mb-4 text-gray-600">
                       {availabilityChecked
                         ? "No hotels are available for your selected criteria. Try adjusting your search parameters."
                         : "Try adjusting your search criteria or apply filters for specific dates."}
@@ -2469,7 +2469,7 @@ export default function HotelBooking() {
                           setAvailabilityChecked(false);
                           toast.info("Showing all hotels");
                         }}
-                        className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                        className="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700"
                       >
                         Show All Hotels
                       </button>

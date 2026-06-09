@@ -128,68 +128,68 @@ const CabBooking = () => {
   });
 
   return (
-    <div className="max-w-7xl mx-auto pt-28 px-6 pb-16 bg-gray-50 min-h-screen relative z-0">
-      <h2 className="text-4xl font-extrabold mb-12 flex items-center gap-4 text-gray-900">
-        <FaCarSide className="text-yellow-600 text-4xl" />
+    <div className="max-w-7xl mx-auto pt-28 px-6 pb-16 bg-[#ebebeb] min-h-screen relative z-0">
+      <h2 className="flex items-center gap-4 mb-12 text-4xl font-extrabold text-gray-900">
+        <FaCarSide className="text-4xl text-yellow-600" />
         Book Your Cab
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
         {/* Sidebar Filters */}
-        <div className="md:col-span-1 space-y-6 bg-white p-6 rounded-lg shadow-md z-10 relative">
-          <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 focus-within:border-yellow-500 transition-colors duration-300">
-            <FaMapMarkerAlt className="text-gray-400 mr-3" />
+        <div className="relative z-10 p-6 space-y-6 bg-white rounded-lg shadow-md md:col-span-1">
+          <div className="flex items-center px-3 py-2 transition-colors duration-300 border border-gray-300 rounded-lg focus-within:border-yellow-500">
+            <FaMapMarkerAlt className="mr-3 text-gray-400" />
             <input
               type="text"
               name="pickup"
               value={filters.pickup}
               onChange={handleChange}
               placeholder="Pickup Location (or click on map)"
-              className="w-full outline-none placeholder-gray-400 text-gray-900 text-base"
+              className="w-full text-base text-gray-900 placeholder-gray-400 outline-none"
             />
           </div>
 
-          <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 focus-within:border-yellow-500 transition-colors duration-300">
-            <FaMapMarkerAlt className="text-gray-400 mr-3" />
+          <div className="flex items-center px-3 py-2 transition-colors duration-300 border border-gray-300 rounded-lg focus-within:border-yellow-500">
+            <FaMapMarkerAlt className="mr-3 text-gray-400" />
             <input
               type="text"
               name="drop"
               value={filters.drop}
               onChange={handleChange}
               placeholder="Drop Location (or click on map)"
-              className="w-full outline-none placeholder-gray-400 text-gray-900 text-base"
+              className="w-full text-base text-gray-900 placeholder-gray-400 outline-none"
             />
           </div>
 
-          <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 focus-within:border-yellow-500 transition-colors duration-300">
-            <AiOutlineCalendar className="text-gray-400 mr-3" />
+          <div className="flex items-center px-3 py-2 transition-colors duration-300 border border-gray-300 rounded-lg focus-within:border-yellow-500">
+            <AiOutlineCalendar className="mr-3 text-gray-400" />
             <input
               type="date"
               name="date"
               value={filters.date}
               onChange={handleChange}
-              className="w-full outline-none text-gray-900 text-base"
+              className="w-full text-base text-gray-900 outline-none"
             />
           </div>
 
-          <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 focus-within:border-yellow-500 transition-colors duration-300">
-            <AiOutlineClockCircle className="text-gray-400 mr-3" />
+          <div className="flex items-center px-3 py-2 transition-colors duration-300 border border-gray-300 rounded-lg focus-within:border-yellow-500">
+            <AiOutlineClockCircle className="mr-3 text-gray-400" />
             <input
               type="time"
               name="time"
               value={filters.time}
               onChange={handleChange}
-              className="w-full outline-none text-gray-900 text-base"
+              className="w-full text-base text-gray-900 outline-none"
             />
           </div>
 
-          <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 focus-within:border-yellow-500 transition-colors duration-300">
-            <FaCarSide className="text-gray-400 mr-3" />
+          <div className="flex items-center px-3 py-2 transition-colors duration-300 border border-gray-300 rounded-lg focus-within:border-yellow-500">
+            <FaCarSide className="mr-3 text-gray-400" />
             <select
               name="carType"
               value={filters.carType}
               onChange={handleChange}
-              className="w-full outline-none text-gray-900 text-base bg-transparent cursor-pointer"
+              className="w-full text-base text-gray-900 bg-transparent outline-none cursor-pointer"
             >
               <option value="">All Car Types</option>
               <option value="Sedan">Sedan</option>
@@ -199,13 +199,13 @@ const CabBooking = () => {
             </select>
           </div>
 
-          <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 focus-within:border-yellow-500 transition-colors duration-300">
-            <MdOutlinePeople className="text-gray-400 mr-3" />
+          <div className="flex items-center px-3 py-2 transition-colors duration-300 border border-gray-300 rounded-lg focus-within:border-yellow-500">
+            <MdOutlinePeople className="mr-3 text-gray-400" />
             <select
               name="passengers"
               value={filters.passengers}
               onChange={handleChange}
-              className="w-full outline-none text-gray-900 text-base bg-transparent cursor-pointer"
+              className="w-full text-base text-gray-900 bg-transparent outline-none cursor-pointer"
             >
               {[1, 2, 3, 4, 5].map((n) => (
                 <option key={n} value={n}>
@@ -223,7 +223,7 @@ const CabBooking = () => {
               onChange={handleChange}
               placeholder="Min Price"
               min={0}
-              className="w-1/2 border border-gray-300 rounded-lg px-3 py-2 outline-none text-gray-900"
+              className="w-1/2 px-3 py-2 text-gray-900 border border-gray-300 rounded-lg outline-none"
             />
             <input
               type="number"
@@ -232,14 +232,14 @@ const CabBooking = () => {
               onChange={handleChange}
               placeholder="Max Price"
               min={0}
-              className="w-1/2 border border-gray-300 rounded-lg px-3 py-2 outline-none text-gray-900"
+              className="w-1/2 px-3 py-2 text-gray-900 border border-gray-300 rounded-lg outline-none"
             />
           </div>
         </div>
 
         {/* Map + Results */}
-        <div className="md:col-span-3 space-y-6 relative z-0">
-          <div className="h-96 rounded-lg shadow-md overflow-hidden border border-gray-300">
+        <div className="relative z-0 space-y-6 md:col-span-3">
+          <div className="overflow-hidden border border-gray-300 rounded-lg shadow-md h-96">
             <MapContainer
               center={[22.57, 88.36]} // Kolkata, West Bengal center
               zoom={11}
@@ -284,14 +284,14 @@ const CabBooking = () => {
                 return (
                   <div
                     key={cab.id}
-                    className="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row justify-between items-center gap-4"
+                    className="flex flex-col items-center justify-between gap-4 p-6 bg-white rounded-lg shadow-md md:flex-row"
                   >
                     <div>
                       <h3 className="text-2xl font-semibold">{cab.name}</h3>
                       <p className="text-gray-600">
                         Type: {cab.type} | Seats: {cab.seats}
                       </p>
-                      <p className="mt-2 text-gray-800 font-semibold">
+                      <p className="mt-2 font-semibold text-gray-800">
                         Fare: ₹{cab.pricePerKm} per km + base ₹{cab.baseFare}
                       </p>
                     </div>
@@ -299,7 +299,7 @@ const CabBooking = () => {
                       <span className="text-2xl font-bold text-yellow-600">
                         ₹{estimatedPrice.toFixed(0)} approx.
                       </span>
-                      <button className="mt-3 px-6 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition">
+                      <button className="px-6 py-2 mt-3 text-white transition bg-yellow-600 rounded-lg hover:bg-yellow-700">
                         Book Now
                       </button>
                     </div>
@@ -307,7 +307,7 @@ const CabBooking = () => {
                 );
               })
             ) : (
-              <p className="text-center text-gray-500 text-lg mt-8">
+              <p className="mt-8 text-lg text-center text-gray-500">
                 No cabs available matching the filters.
               </p>
             )}

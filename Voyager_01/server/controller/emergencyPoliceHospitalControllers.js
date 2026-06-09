@@ -51,7 +51,7 @@ const nearbyServices = async (req, res) => {
       type: "Point",
       coordinates: [long, lat],
     };
-    const sortedHospitals = NearbyHospital.aggregate([
+    const sortedHospitals = await NearbyHospital.aggregate([
       {
         $geoNear: {
           near: userLocation,
@@ -63,7 +63,7 @@ const nearbyServices = async (req, res) => {
       { $limit: 5 },
     ]);
 
-    const sortedPoliceStations = PoliceStation.aggregate([
+    const sortedPoliceStations = await PoliceStation.aggregate([
       {
         $geoNear: {
           near: userLocation,
@@ -75,19 +75,18 @@ const nearbyServices = async (req, res) => {
       { $limit: 5 },
     ]);
 
-    const [hospitals, policeStations] = await Promise.all([
-      sortedHospitals,
-      sortedPoliceStations,
-    ]);
+    console.log("🏥 Found hospitals:", sortedHospitals.length);
+    console.log("🚔 Found police stations:", sortedPoliceStations.length);
 
     res.status(200).json({
-      hospitals,
-      policeStations,
+      hospitals: sortedHospitals,
+      policeStations: sortedPoliceStations,
     });
   } catch (err) {
-    console.log(err);
+    console.error("❌ Emergency services error:", err);
     res.status(500).json({
-      msg: "Server error",
+      msg: "Server error fetching nearby services",
+      error: err.message
     });
   }
 };
