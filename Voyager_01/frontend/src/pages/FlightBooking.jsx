@@ -57,64 +57,64 @@ const FlightBooking = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto pt-28 px-4 pb-12">
-      <h2 className="text-3xl font-bold mb-10 flex items-center gap-2">
+    <div className="px-4 pb-12 mx-auto max-w-7xl pt-28">
+      <h2 className="flex items-center gap-2 mb-10 text-3xl font-bold">
         <FaPlane className="text-blue-500" />
         Book Your Flight
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
         {/* Sidebar Filters */}
-        <div className="md:col-span-1 space-y-4">
-          <div className="border px-3 py-2 rounded-md flex items-center">
-            <FaSearch className="text-gray-500 mr-2" />
+        <div className="space-y-4 md:col-span-1">
+          <div className="flex items-center p-3 border-2 rounded-md border-black-300 bg-gray-50">
+            <FaSearch className="mr-2 text-gray-500" />
             <input
               type="text"
               placeholder="From"
               value={fromSearch}
               onChange={(e) => setFromSearch(e.target.value)}
-              className="outline-none w-full"
+              className="w-full bg-transparent outline-none"
             />
           </div>
 
-          <div className="border px-3 py-2 rounded-md flex items-center">
-            <FaSearch className="text-gray-500 mr-2" />
+          <div className="flex items-center p-3 border-2 rounded-md border-black-300 bg-gray-50">
+            <FaSearch className="mr-2 text-gray-500" />
             <input
               type="text"
               placeholder="To"
               value={toSearch}
               onChange={(e) => setToSearch(e.target.value)}
-              className="outline-none w-full"
+              className="w-full bg-transparent outline-none"
             />
           </div>
 
-          <div className="border px-3 py-2 rounded-md flex items-center">
-            <FaSearch className="text-gray-500 mr-2" />
+          <div className="flex items-center p-3 border-2 rounded-md border-black-300 bg-gray-50">
+            <FaSearch className="mr-2 text-gray-500" />
             <input
               type="text"
               placeholder="Airline"
               value={airlineSearch}
               onChange={(e) => setAirlineSearch(e.target.value)}
-              className="outline-none w-full"
+              className="w-full bg-transparent outline-none"
             />
           </div>
 
-          <div className="border px-3 py-2 rounded-md flex items-center">
-            <AiOutlineCalendar className="text-gray-500 mr-2" />
+          <div className="flex items-center p-3 border-2 rounded-md border-black-300 bg-gray-50">
+            <AiOutlineCalendar className="mr-2 text-gray-500" />
             <input
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="outline-none w-full"
+              className="w-full bg-transparent outline-none"
             />
           </div>
 
-          <div className="border px-3 py-2 rounded-md flex items-center">
-            <MdOutlinePeople className="text-gray-500 mr-2" />
+          <div className="flex items-center p-3 border-2 rounded-md border-black-300 bg-gray-50">
+            <MdOutlinePeople className="mr-2 text-gray-500" />
             <select
               value={passengers}
               onChange={(e) => setPassengers(parseInt(e.target.value))}
-              className="outline-none w-full"
+              className="w-full bg-transparent outline-none"
             >
               {[...Array(10)].map((_, i) => (
                 <option key={i + 1} value={i + 1}>
@@ -126,12 +126,12 @@ const FlightBooking = () => {
         </div>
 
         {/* Flight Results */}
-        <div className="md:col-span-3 space-y-6">
+        <div className="space-y-6 md:col-span-3">
           {filteredFlights.length > 0 ? (
             filteredFlights.map((flight) => (
               <div
                 key={flight.id}
-                className="p-6 border rounded-md shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center"
+                className="flex flex-col items-start justify-between p-6 border rounded-md shadow-sm md:flex-row md:items-center"
               >
                 <div>
                   <h3 className="text-xl font-semibold">
@@ -152,7 +152,7 @@ const FlightBooking = () => {
                   </p>
                   <button
                     onClick={() => handleBooking(flight)}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+                    className="px-4 py-2 text-white transition bg-blue-500 rounded-md hover:bg-blue-600"
                   >
                     Book Now
                   </button>

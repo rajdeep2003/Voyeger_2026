@@ -61,25 +61,25 @@ export default function BusBooking() {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen p-6 pt-28">
+    <div className="bg-[#ebebe] min-h-screen p-6 pt-28">
       <div className="max-w-6xl mx-auto space-y-10">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-blue-800">Bus Booking Portal</h1>
           <p className="text-gray-600">Search, select seats, and reserve your ride!</p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col items-center justify-center gap-4 md:flex-row">
           <input
             type="text"
             placeholder="Source"
-            className="border p-2 rounded-md w-64"
+            className="w-64 p-2 border rounded-md"
             value={source}
             onChange={(e) => setSource(e.target.value)}
           />
           <input
             type="text"
             placeholder="Destination"
-            className="border p-2 rounded-md w-64"
+            className="w-64 p-2 border rounded-md"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
           />
@@ -91,10 +91,10 @@ export default function BusBooking() {
             {filteredBuses.map((bus) => (
               <div
                 key={bus.id}
-                className="bg-white p-4 rounded-lg shadow flex flex-col md:flex-row justify-between items-center hover:shadow-lg transition"
+                className="flex flex-col items-center justify-between p-4 transition bg-white rounded-lg shadow md:flex-row hover:shadow-lg"
               >
                 <div className="flex-1 space-y-1">
-                  <h3 className="text-lg font-bold text-blue-700 flex items-center gap-2">
+                  <h3 className="flex items-center gap-2 text-lg font-bold text-blue-700">
                     <FaBus /> {bus.name}
                   </h3>
                   <p className="text-gray-600">
@@ -104,14 +104,14 @@ export default function BusBooking() {
                     Departs at {bus.departure} | Arrives by {bus.arrival}
                   </p>
                 </div>
-                <div className="text-right space-y-1">
-                  <p className="text-blue-800 font-bold text-xl">₹{bus.price}</p>
+                <div className="space-y-1 text-right">
+                  <p className="text-xl font-bold text-blue-800">₹{bus.price}</p>
                   <button
                     onClick={() => {
                       setSelectedBus(bus);
                       setSelectedSeats([]);
                     }}
-                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                    className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700"
                   >
                     Select Seats
                   </button>
@@ -120,7 +120,7 @@ export default function BusBooking() {
             ))}
           </div>
         ) : (
-          <div className="bg-white p-6 rounded-lg shadow-md space-y-6">
+          <div className="p-6 space-y-6 bg-white rounded-lg shadow-md">
             <button
               className="text-blue-600 hover:underline"
               onClick={() => setSelectedBus(null)}
@@ -130,7 +130,7 @@ export default function BusBooking() {
 
             <h2 className="text-2xl font-bold">Select Your Seats</h2>
 
-            <div className="grid grid-cols-5 gap-4 w-full max-w-md mx-auto border p-4 rounded-md bg-gray-100">
+            <div className="grid w-full max-w-md grid-cols-5 gap-4 p-4 mx-auto bg-gray-100 border rounded-md">
               {selectedBus.availableSeats.map((_, index) => (
                 <button
                   key={index}
@@ -143,10 +143,10 @@ export default function BusBooking() {
               ))}
             </div>
 
-            <div className="text-center mt-6">
-              <h3 className="text-lg font-semibold mb-2">Total Price: ₹{selectedSeats.length * selectedBus.price}</h3>
+            <div className="mt-6 text-center">
+              <h3 className="mb-2 text-lg font-semibold">Total Price: ₹{selectedSeats.length * selectedBus.price}</h3>
               <button
-                className="bg-blue-700 text-white px-6 py-2 rounded hover:bg-blue-800"
+                className="px-6 py-2 text-white bg-blue-700 rounded hover:bg-blue-800"
                 onClick={() => alert("Booking Confirmed!\nSeats: " + selectedSeats.map(i => i + 1).join(", "))}
               >
                 Confirm Booking

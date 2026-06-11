@@ -86,16 +86,16 @@ const TrainBooking = () => {
   });
 
   return (
-    <div className="max-w-7xl mx-auto pt-28 px-6 pb-16 min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
-      <h2 className="text-5xl font-black mb-12 flex items-center gap-4 text-green-800 drop-shadow">
-        <FaTrain className="text-green-600 text-5xl" />
+    <div className="max-w-7xl mx-auto pt-28 px-6 pb-16 min-h-screen bg-[#ebebeb]">
+      <h2 className="flex items-center gap-4 mb-12 text-5xl font-black text-black-800 drop-shadow">
+        <FaTrain className="text-5xl text-black-600" />
         Train Booking Portal
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
         {/* Sidebar Filters */}
-        <div className="md:col-span-1 bg-white rounded-2xl shadow-xl p-6 space-y-6 border-2 border-green-100">
-          <h3 className="text-xl font-bold text-green-700">Search Filters</h3>
+        <div className="p-6 space-y-6 bg-white border-2 shadow-xl border-black-100 md:col-span-1 rounded-2xl">
+          <h3 className="text-xl font-bold text-black-700">Search Filters</h3>
           {[
             { name: "source", placeholder: "Source", icon: <FaSearch /> },
             { name: "destination", placeholder: "Destination", icon: <FaSearch /> },
@@ -104,38 +104,38 @@ const TrainBooking = () => {
           ].map(({ name, placeholder, icon }) => (
             <div
               key={name}
-              className="flex items-center border border-green-300 rounded-xl px-3 py-2 bg-green-50 focus-within:border-green-600 transition"
+              className="flex items-center px-3 py-2 transition border border-black-300 rounded-xl bg-gray-50 focus-within:border-black-600"
             >
-              <div className="text-green-500 mr-3">{icon}</div>
+              <div className="mr-3 text-black-500">{icon}</div>
               <input
                 type="text"
                 name={name}
                 value={filters[name]}
                 onChange={handleChange}
                 placeholder={placeholder}
-                className="w-full outline-none placeholder-green-400 text-gray-900 text-base bg-transparent"
+                className="w-full text-base text-gray-900 bg-transparent outline-none placeholder-black-400"
               />
             </div>
           ))}
 
-          <div className="flex items-center border border-green-300 rounded-xl px-3 py-2 bg-green-50">
-            <AiOutlineCalendar className="text-green-500 mr-3" />
+          <div className="flex items-center px-3 py-2 border border-black-300 rounded-xl bg-gray-50">
+            <AiOutlineCalendar className="mr-3 text-black-500" />
             <input
               type="date"
               name="date"
               value={filters.date}
               onChange={handleChange}
-              className="w-full outline-none text-gray-900 bg-transparent"
+              className="w-full text-gray-900 bg-transparent outline-none"
             />
           </div>
 
-          <div className="flex items-center border border-green-300 rounded-xl px-3 py-2 bg-green-50">
-            <MdOutlinePeople className="text-green-500 mr-3" />
+          <div className="flex items-center px-3 py-2 border border-black-300 rounded-xl bg-gray-50">
+            <MdOutlinePeople className="mr-3 text-black-500" />
             <select
               name="passengers"
               value={filters.passengers}
               onChange={handleChange}
-              className="w-full outline-none bg-transparent text-gray-900 cursor-pointer"
+              className="w-full text-gray-900 bg-transparent outline-none cursor-pointer"
             >
               {[1, 2, 3, 4, 5].map((n) => (
                 <option key={n} value={n}>
@@ -146,8 +146,8 @@ const TrainBooking = () => {
           </div>
 
           <div className="flex space-x-4">
-            <div className="flex items-center border border-green-300 rounded-xl px-3 py-2 bg-green-50 w-1/2">
-              <span className="text-green-500 mr-2">Min ₹</span>
+            <div className="flex items-center w-1/2 px-3 py-2 border border-black-300 rounded-xl bg-gray-50">
+              <span className="mr-2 text-black-500">Min ₹</span>
               <input
                 type="number"
                 name="minPrice"
@@ -155,12 +155,12 @@ const TrainBooking = () => {
                 onChange={handleChange}
                 min={0}
                 placeholder="0"
-                className="w-full outline-none bg-transparent"
+                className="w-full bg-transparent outline-none"
               />
             </div>
 
-            <div className="flex items-center border border-green-300 rounded-xl px-3 py-2 bg-green-50 w-1/2">
-              <span className="text-green-500 mr-2">Max ₹</span>
+            <div className="flex items-center w-1/2 px-3 py-2 border border-black-300 rounded-xl bg-gray-50">
+              <span className="mr-2 text-black-500">Max ₹</span>
               <input
                 type="number"
                 name="maxPrice"
@@ -168,28 +168,28 @@ const TrainBooking = () => {
                 onChange={handleChange}
                 min={0}
                 placeholder="Any"
-                className="w-full outline-none bg-transparent"
+                className="w-full bg-transparent outline-none"
               />
             </div>
           </div>
         </div>
 
         {/* Train Results */}
-        <div className="md:col-span-3 space-y-8">
-          <h3 className="text-2xl font-bold text-green-800 mb-4">Available Trains</h3>
+        <div className="space-y-8 md:col-span-3">
+          <h3 className="mb-4 text-2xl font-bold text-green-600">Available Trains</h3>
           {filteredTrains.length > 0 ? (
             filteredTrains.map((train) => (
               <div
                 key={train.id}
-                className="p-6 bg-white rounded-xl shadow-md border-l-4 border-green-600 hover:shadow-xl transition-all duration-300"
+                className="p-6 transition-all duration-300 bg-white border-l-4 border-green-600 shadow-md rounded-xl hover:shadow-xl"
               >
-                <div className="flex flex-col md:flex-row justify-between md:items-center">
+                <div className="flex flex-col justify-between md:flex-row md:items-center">
                   <div className="space-y-1">
                     <h3 className="text-2xl font-bold text-gray-900">
                       {train.source} → {train.destination}
                     </h3>
-                    <p className="text-lg text-green-700 font-semibold">{train.name}</p>
-                    <p className="text-sm text-gray-600 font-mono tracking-wide">
+                    <p className="text-lg font-semibold text-green-700">{train.name}</p>
+                    <p className="font-mono text-sm tracking-wide text-gray-600">
                       Train No: <span className="font-bold">{train.number}</span>
                     </p>
                     <p className="text-sm text-gray-600">
@@ -201,11 +201,11 @@ const TrainBooking = () => {
                     </p>
                   </div>
                   <div className="flex items-center gap-6 mt-4 md:mt-0">
-                    <p className="text-3xl font-extrabold text-green-700">
+                    <p className="text-3xl font-extrabold text-gray-700">
                       ₹{train.price.toLocaleString()}
                     </p>
                     <button
-                      className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition transform duration-200"
+                      className="px-6 py-3 font-semibold text-white transition duration-200 transform shadow-lg bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 rounded-xl hover:scale-105"
                       onClick={() =>
                         alert(`Booking train ${train.name} (#${train.number})`)
                       }
@@ -217,7 +217,7 @@ const TrainBooking = () => {
               </div>
             ))
           ) : (
-            <p className="text-center text-red-500 font-semibold text-lg mt-10">
+            <p className="mt-10 text-lg font-semibold text-center text-red-500">
               No trains found. Try adjusting the filters!
             </p>
           )}

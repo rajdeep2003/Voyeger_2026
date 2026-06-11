@@ -43,11 +43,11 @@ export default function SouvenirListing({ souvenirs, onSouvenirClick }) {
   //1``
 
   return (
-    <div className="container mx-auto p-10 mt-20 ">
+    <div className="w-full p-10 mx-auto mt-20 bg-[#ebebeb]">
       {/* Header */}
-      <div className="text-center mb-8 ">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Regional Souvenirs</h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+      <div className="mb-8 text-center ">
+        <h1 className="mb-4 text-4xl font-bold text-gray-900">Regional Souvenirs</h1>
+        <p className="max-w-2xl mx-auto text-lg text-gray-600">
           Discover authentic souvenirs from around the world. Each item tells a story of its region's culture and
           craftsmanship.
         </p>
@@ -55,13 +55,13 @@ export default function SouvenirListing({ souvenirs, onSouvenirClick }) {
 
       {/* Search and Filter Controls */}
       <div className="mb-8">
-        <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
+        <div className="flex flex-col items-center justify-between gap-4 lg:flex-row">
           <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
 
           <div className="flex items-center gap-4">
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 transition-colors bg-white border border-gray-300 rounded-lg hover:bg-gray-50"
             >
               <Filter className="w-4 h-4" />
               Filters
@@ -78,7 +78,7 @@ export default function SouvenirListing({ souvenirs, onSouvenirClick }) {
       <div className="flex gap-8">
         {/* Filters Sidebar */}
         {showFilters && (
-          <div className="w-80 flex-shrink-0">
+          <div className="flex-shrink-0 w-80">
             <FilterSidebar
               regions={regions}
               categories={categories}
@@ -95,15 +95,15 @@ export default function SouvenirListing({ souvenirs, onSouvenirClick }) {
         {/* Souvenirs Grid */}
         <div className="flex-1">
           {filteredSouvenirs.length === 0 ? (
-            <div className="text-center py-12">
-              <div className="text-gray-400 mb-4">
+            <div className="py-12 text-center">
+              <div className="mb-4 text-gray-400">
                 <Search className="w-16 h-16 mx-auto" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No souvenirs found</h3>
+              <h3 className="mb-2 text-xl font-semibold text-gray-900">No souvenirs found</h3>
               <p className="text-gray-600">Try adjusting your search or filter criteria</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filteredSouvenirs.map((souvenir) => (
                 <SouvenirCard key={souvenir.id} souvenir={souvenir} onClick={() => onSouvenirClick(souvenir)} />
               ))}

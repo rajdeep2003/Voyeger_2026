@@ -1,18 +1,17 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./components/Exclusive/Navbar/Navbar";
+import Footer from "./components/Exclusive/Footer/Footer";
 import Home from "./pages/Home";
 import Booking from "./pages/Booking";
 import Contact from "./pages/Contact";
 import MapPage from "./pages/MapPage";
 import Weather from "./pages/Weather";
-import Emergency from "./pages/Emergency";
+import EmergencyPage from "./components/Exclusive/Emergency/EmergencyPage";
 import TrackLocationPage from "./pages/TrackLocationPage";
 import { ToastContainer } from 'react-toastify';
 import TravelDestination from "./pages/TravelDestination";
-import Testimonials from "./components/Testimonials";
 import HotelBooking from "./pages/HotelBooking";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -35,12 +34,14 @@ import HotelApp from "./ownersec/HotelApp";
 import ProtectedRoute from "./components/protectedRoute";
 import SouBooking_App from "./SouBooking_App";
 import VendorApp from "./vendorsec/lib/VendorApp";
-import Monuments from "./components/Monuments";
+import MonumentsPage from "./components/Exclusive/Monuments/MonumentsPage";
 
 const App = () => {
   const { user } = useAppContext();
+  const location = useLocation();
   const isOwner = user && user.role === "Owner";
   const isVendor = user && user.role === "Vendor";
+  const hideFooter = location.pathname === "/login" || location.pathname === "/register";
 
   return (
     <div className="overflow-x-hidden">
@@ -74,39 +75,40 @@ const App = () => {
       ) : (
         <>
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/booking" element={<Booking />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/community" element={<Community />} />
-            <Route path="/weather" element={<Weather />} />
-            <Route path="/map" element={<MapPage />} />
-            <Route path="/emergency" element={<Emergency />} />
-            <Route path="/track/:userId" element={<TrackLocationPage />} />
-            <Route path="/explore" element={<ExplorePage />} />
-            <Route path="/flightbook" element={<FlightBooking />} />
-            <Route path="/trainbook" element={<TrainBooking />} />
-            <Route path="/busbook" element={<BusBooking />} />
-            <Route path="/souvenirbook" element={<SouBooking_App />} />
-            <Route path="/cabbook" element={<CabBooking />} />
-            <Route path="/paris" element={<TravelDestination />} />
-            <Route path="/purulia" element={<TravelDestinationPurulia />} />
-            <Route path="/kerala" element={<TravelDestinationKerala />} />
-            <Route path="/kashmir" element={<TravelDestinationJK />} />
-            <Route path="/delhi" element={<TravelDestinationDelhi />} />
-            <Route path="/andaman" element={<TravelDestinationAndaman />} />
-            <Route path="/bishupur" element={<HiddenGemsBisnapur />} />
-            <Route path="/doars" element={<HiddenGemsDooars />} />
-            <Route path="/hotelbook" element={<HotelBooking />} />
-            <Route path="/digha" element={<Digha />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Signup />} />
-            <Route path="/monuments" element={<Monuments />} />
-            
-          </Routes>
-          <Testimonials />
-          <Footer />
+          <div className="pt-16">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/booking" element={<Booking />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/community" element={<Community />} />
+              <Route path="/weather" element={<Weather />} />
+              <Route path="/map" element={<MapPage />} />
+              <Route path="/emergency" element={<EmergencyPage />} />
+              <Route path="/track/:userId" element={<TrackLocationPage />} />
+              <Route path="/explore" element={<ExplorePage />} />
+              <Route path="/flightbook" element={<FlightBooking />} />
+              <Route path="/trainbook" element={<TrainBooking />} />
+              <Route path="/busbook" element={<BusBooking />} />
+              <Route path="/souvenirbook" element={<SouBooking_App />} />
+              <Route path="/cabbook" element={<CabBooking />} />
+              <Route path="/paris" element={<TravelDestination />} />
+              <Route path="/purulia" element={<TravelDestinationPurulia />} />
+              <Route path="/kerala" element={<TravelDestinationKerala />} />
+              <Route path="/kashmir" element={<TravelDestinationJK />} />
+              <Route path="/delhi" element={<TravelDestinationDelhi />} />
+              <Route path="/andaman" element={<TravelDestinationAndaman />} />
+              <Route path="/bishupur" element={<HiddenGemsBisnapur />} />
+              <Route path="/doars" element={<HiddenGemsDooars />} />
+              <Route path="/hotelbook" element={<HotelBooking />} />
+              <Route path="/digha" element={<Digha />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Signup />} />
+              <Route path="/monuments" element={<MonumentsPage />} />
+              
+            </Routes>
+          </div>
+          {!hideFooter && <Footer />}
         </>
       )}
     </div>
