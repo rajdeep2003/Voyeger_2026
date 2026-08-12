@@ -12,8 +12,8 @@ const Explore = () => {
       location: "France",
       rating: 5,
       description: "A luxurious 5-star hotel known for its premium hospitality.",
-
-      image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGFyaXN8ZW58MHx8MHx8fDA%3D"
+       
+       image : "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGFyaXN8ZW58MHx8MHx8fDA%3D"
     },
     {
       name: "Leela Palace",
@@ -111,7 +111,7 @@ const Explore = () => {
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
-
+     
       <button
         onClick={() => navigate("/")}
         className="mb-6 bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-300"
@@ -119,83 +119,83 @@ const Explore = () => {
         ⬅ Back
       </button>
 
-
-      <h2 className="text-3xl font-bold mb-6 text-center">🏨 Best Places</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-10">
-        {hotels.map((hotel, index) => (
-          <div
-            key={index}
-            className="border rounded-lg overflow-hidden shadow-lg bg-white transform transition duration-300 hover:scale-105 hover:shadow-2xl hover:border-blue-500"
-          >
-
-            <div className="overflow-hidden">
-              <img
-                src={hotel.image}
-                alt={hotel.name}
-                className="object-cover h-64 w-full transition duration-300 hover:scale-110"
-              />
-            </div>
-
-
-            <div className="p-4 text-center">
-              <h3 className="text-lg font-semibold">{hotel.name}</h3>
-              <p className="text-gray-500">{hotel.location}</p>
-              <p className="text-yellow-500 font-medium">⭐ {hotel.rating}</p>
-              <p className="text-sm text-gray-600 mt-2">{hotel.description}</p>
-
-
-              <Link
-                to={`${hotel.name == 'Paris' ? "/travelDestination" : `${hotel.link}`}`}
-
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block mt-3 bg-blue-500 text-white text-center px-4 py-2 rounded-lg transition duration-300 hover:bg-blue-700 hover:scale-105"
-              >
-                {<span> Visit</span>}
-              </Link>
-            </div>
-          </div>
-        ))}
+       
+<h2 className="text-3xl font-bold mb-6 text-center">🏨 Best Places</h2>
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-10">
+  {hotels.map((hotel, index) => (
+    <div 
+      key={index} 
+      className="border rounded-lg overflow-hidden shadow-lg bg-white transform transition duration-300 hover:scale-105 hover:shadow-2xl hover:border-blue-500"
+    >
+       
+      <div className="overflow-hidden">
+        <img 
+          src={hotel.image} 
+          alt={hotel.name} 
+          className="object-cover h-64 w-full transition duration-300 hover:scale-110"
+        />
       </div>
 
-
-
-      <h2 className="text-3xl font-bold mt-12 mb-6 text-center">🌟 Top Traveling Places</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-12">
-        {places.map((place, index) => (
-          <div
-            key={index}
-            className="border rounded-lg overflow-hidden shadow-lg bg-white transform transition duration-300 hover:scale-105 hover:shadow-2xl hover:border-green-500"
-          >
-
-            <div className="overflow-hidden">
-              <img
-                src={place.image}
-                alt={place.name}
-                className="object-cover h-56 w-full transition duration-300 hover:scale-110"
-              />
-            </div>
-
-
-            <div className="p-4 text-center">
-              <h3 className="text-lg font-semibold">{place.name}</h3>
-              <p className="text-gray-500">{place.city}</p>
-              <p className="text-yellow-500 font-medium">⭐ {place.rating}</p>
-              <p className="text-sm text-gray-600 mt-2">{place.description}</p>
-
-
-              <a
-                href={place.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block mt-3 bg-green-500 text-white text-center px-3 py-2 rounded-lg transition duration-300 hover:bg-green-700 hover:scale-105"
-              >
-                Explore
-              </a>
-            </div>
-          </div>
-        ))}
+  
+      <div className="p-4 text-center">
+        <h3 className="text-lg font-semibold">{hotel.name}</h3>
+        <p className="text-gray-500">{hotel.location}</p>
+        <p className="text-yellow-500 font-medium">⭐ {hotel.rating}</p>
+        <p className="text-sm text-gray-600 mt-2">{hotel.description}</p>
+        
+         
+        <Link
+          to= {`${hotel.name == 'Paris'?"/travelDestination":`${hotel.link}`}`} 
+           
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="block mt-3 bg-blue-500 text-white text-center px-4 py-2 rounded-lg transition duration-300 hover:bg-blue-700 hover:scale-105"
+        >
+           {<span> Visit</span>}
+        </Link>
       </div>
+    </div>
+  ))}
+</div>
+
+
+    
+<h2 className="text-3xl font-bold mt-12 mb-6 text-center">🌟 Top Traveling Places</h2>
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-12">
+  {places.map((place, index) => (
+    <div 
+      key={index} 
+      className="border rounded-lg overflow-hidden shadow-lg bg-white transform transition duration-300 hover:scale-105 hover:shadow-2xl hover:border-green-500"
+    >
+       
+      <div className="overflow-hidden">
+        <img 
+          src={place.image} 
+          alt={place.name} 
+          className="object-cover h-56 w-full transition duration-300 hover:scale-110"
+        />
+      </div>
+
+       
+      <div className="p-4 text-center">
+        <h3 className="text-lg font-semibold">{place.name}</h3>
+        <p className="text-gray-500">{place.city}</p>
+        <p className="text-yellow-500 font-medium">⭐ {place.rating}</p>
+        <p className="text-sm text-gray-600 mt-2">{place.description}</p>
+        
+         
+        <a 
+          href={place.link} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="block mt-3 bg-green-500 text-white text-center px-3 py-2 rounded-lg transition duration-300 hover:bg-green-700 hover:scale-105"
+        >
+          Explore
+        </a>
+      </div>
+    </div>
+  ))}
+</div>
 
     </div>
   );

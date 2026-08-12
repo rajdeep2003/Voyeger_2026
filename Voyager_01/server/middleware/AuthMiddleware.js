@@ -2,6 +2,12 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const authMiddleware = (req, res, next) => {
+    // Development bypass: set DISABLE_AUTH=true in server/.env to skip JWT checks
+    if (process.env.DISABLE_AUTH === 'true') {
+        req.user = { id: 'dev', role: 'user' };
+        return next();
+    }
+
     const token = req.cookies.token || req.header("Authorization")?.replace("Bearer ", "");
 
     if (!token) {

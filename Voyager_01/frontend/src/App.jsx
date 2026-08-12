@@ -35,6 +35,8 @@ import ProtectedRoute from "./components/protectedRoute";
 import SouBooking_App from "./SouBooking_App";
 import VendorApp from "./vendorsec/lib/VendorApp";
 import MonumentsPage from "./components/Exclusive/Monuments/MonumentsPage";
+import AiCopilot from "./pages/AiCopilot";
+import TripBuddy from "./components/Exclusive/TripBuddy/TripBuddy";
 
 const App = () => {
   const { user } = useAppContext();
@@ -105,10 +107,12 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Signup />} />
               <Route path="/monuments" element={<MonumentsPage />} />
+              <Route path="/ai-copilot" element={<AiCopilot />} />
               
             </Routes>
           </div>
           {!hideFooter && <Footer />}
+          {!hideFooter && location.pathname !== "/ai-copilot" && <TripBuddy />}
         </>
       )}
     </div>

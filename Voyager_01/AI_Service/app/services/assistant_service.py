@@ -5,12 +5,19 @@ from app.ml.safety_predictor import (predict_safety)
 from app.ml.scam_predictor import (predict_scam)
 from app.ml.tourism_predictor import (predict_tourism)
 from app.models.response_models import (AssistantResponse)
+from app.db.database import prediction_collection
+from datetime import datetime, timezone
 
-def process_destination(request):
-    destination = get_destination_details(request.destination)
+async def process_destination(request):
+    destination = await get_destination_details(request.destination)
 
     if not destination:
-        raise ValueError("Destination not found")
+        destination = {
+            "city": request.destination or "General",
+            "category": "General",
+            "latitude": 20.5937,
+            "longitude": 78.9629
+        }
 
     (
         safety_features,
@@ -46,6 +53,23 @@ def process_destination(request):
         f"{safety_result['risk']} "
         f"with {scam_result['scam_risk']}."
     )
+
+    # Save prediction history to database
+    prediction_data = {
+        "destination_name": request.destination,
+        "visit_date": str(request.visit_date),
+        "safety_risk": safety_result["risk"],
+        "safety_confidence": safety_result["confidence"],
+        "scam_risk": scam_result["scam_risk"],
+        "scam_confidence": scam_result["confidence"],
+        "crowd_level": tourism_result["crowd_level"],
+        "crowd_confidence": tourism_result["confidence"],
+        "recommendation": recommendation,
+        "summary": summary,
+        "timestamp": datetime.now(timezone.utc)
+    }
+    # Save prediction history to database asynchronously (non-blocking)
+    asyncio.create_task(prediction_collection.insert_one(prediction_data))
 
     return AssistantResponse(
         destination=request.destination,

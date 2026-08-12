@@ -9,8 +9,8 @@ import { Button } from "../components/ui/Button"
 import { useAppContext } from "../context/AppContext"
 
 const CreatePost = ({ onSubmit }) => {
-  const { createCom, setCreateCom, currentcity,
-    setCurrentcity } = useAppContext();
+  const {createCom , setCreateCom , currentcity , 
+        setCurrentcity} = useAppContext();
   const [formData, setFormData] = useState({
     destination: "",
     title: "",
@@ -42,17 +42,17 @@ const CreatePost = ({ onSubmit }) => {
       const validFiles = Array.from(e.target.files).filter((file) => {
         const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
         const maxSize = 5 * 1024 * 1024; // 5MB
-
+        
         if (!validTypes.includes(file.type)) {
           alert(`${file.name} is not a supported image type (JPEG, PNG, GIF only)`);
           return false;
         }
-
+        
         if (file.size > maxSize) {
           alert(`${file.name} is too large (max 5MB)`);
           return false;
         }
-
+        
         return true;
       });
 
@@ -60,7 +60,7 @@ const CreatePost = ({ onSubmit }) => {
         url: URL.createObjectURL(file),
         file
       }));
-
+      
       setFormData(prev => ({
         ...prev,
         photos: [...prev.photos, ...filesArray]
@@ -71,18 +71,18 @@ const CreatePost = ({ onSubmit }) => {
   const handleDrop = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
-
+    
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
       const validFiles = Array.from(e.dataTransfer.files).filter((file) => {
         const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
         return validTypes.includes(file.type);
       });
-
+      
       const filesArray = validFiles.map((file) => ({
         url: URL.createObjectURL(file),
         file
       }));
-
+      
       setFormData(prev => ({
         ...prev,
         photos: [...prev.photos, ...filesArray]
@@ -215,7 +215,7 @@ const CreatePost = ({ onSubmit }) => {
                 <Camera className="w-4 h-4 mr-1" />
                 Photos
               </label>
-              <div
+              <div 
                 className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 hover:bg-blue-50 transition-colors duration-300"
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={handleDrop}
@@ -228,8 +228,8 @@ const CreatePost = ({ onSubmit }) => {
                   onChange={handleImageChange}
                   className="hidden"
                 />
-                <label
-                  htmlFor="file-upload"
+                <label 
+                  htmlFor="file-upload" 
                   className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer"
                 >
                   <Camera className="w-5 h-5 mr-2" />
@@ -298,13 +298,11 @@ const CreatePost = ({ onSubmit }) => {
               <Button type="button" variant="outline">
                 Save as Draft
               </Button>
-              <Button
-
-                type="submit" className="bg-blue-600 hover:bg-blue-700" >
-                <span onClick={() => setCreateCom(false)}>
+              <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
+                 <span className="flex items-center" onClick={()=>setCreateCom(false)}>
                   <Send className="w-4 h-4 mr-2" />
                   Share Experience
-                </span>
+                 </span>
               </Button>
             </div>
           </form>

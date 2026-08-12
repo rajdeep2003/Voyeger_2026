@@ -10,3 +10,7 @@ class AssistantResponse(BaseModel):
     crowd_confidence: float
     recommendation: str
     summary: str
+
+class ChatResponse(BaseModel):
+    destination: str
+    response: str
