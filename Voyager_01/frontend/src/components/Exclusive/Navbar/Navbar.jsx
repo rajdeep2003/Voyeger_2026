@@ -34,6 +34,7 @@ const navLinks = [
 	{ label: "Emergency", path: "/emergency" },
 	{ label: "Contact", path: "/contact" },
 	{ label: "Monuments", path: "/monuments" },
+	{ label: "AI Copilot", path: "/ai-copilot" },
 ];
 
 const Navbar = () => {

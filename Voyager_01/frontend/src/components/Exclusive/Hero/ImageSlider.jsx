@@ -5,18 +5,18 @@ import "./Hero.css";
 import { TRAIL_PATH_D, TRAIL_START_DOTS, TRAIL_VIEWBOX } from "./pathtrail";
 
 const slides = [
-  { name: "Bishnupur", img: "https://assets.zeezest.com/images/PROD_bishnupur_1704899861960_thumb_800.jpeg", x: 8, y: 21 },
-  { name: "Doars", img: "https://assets.zeezest.com/images/PROD_dooars%20%281%29_1704900895264_thumb_800.jpeg", x: 21, y: 20 },
-  { name: "Jhargram", img: "https://assets.zeezest.com/images/PROD_jhargram_1704899616152_thumb_800.jpeg", x: 35, y: 22 },
-  { name: "Kankrajhor", img: "https://imgs.search.brave.com/FoZ5fbki0Tj2No5MCGBzkUQTC5QJJ9RfOhf7raOPsOo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9rYW5r/cmFqaG9yLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyMi8w/OS9JTUctMjAyMjA5/MjAtV0EwMDE1Lmpw/Zw", x: 51, y: 18 },
+  { name: "Bishnupur", img: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&auto=format&fit=crop", x: 8, y: 21 },
+  { name: "Doars", img: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=800&auto=format&fit=crop", x: 21, y: 20 },
+  { name: "Jhargram", img: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800&auto=format&fit=crop", x: 35, y: 22 },
+  { name: "Kankrajhor", img: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&auto=format&fit=crop", x: 51, y: 18 },
   { name: "Paris", img: "https://plus.unsplash.com/premium_photo-1661919210043-fd847a58522d?w=600&auto=format&fit=crop&q=60", x: 64, y: 21 },
-  { name: "Delhi", img: "https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg", x: 88, y: 22 },
-  { name: "Andaman", img: "https://tse4.mm.bing.net/th?id=OIP.Vo6dXy0kKreXtnbsnzNeagHaEL&pid=Api&P=0&h=180", x: 89, y: 68 },
-  { name: "Kashmir", img: "https://img.veenaworld.com/wp-content/uploads/2023/01/shutterstock_2044050407-scaled.jpg", x: 76, y: 75 },
-  { name: "Kerala", img: "https://tse4.mm.bing.net/th?id=OIP.1LmC3AubOyv1mN-FzKU7BAHaE8&pid=Api&P=0&h=180", x: 62, y: 75 },
-  { name: "Ayodha Pahar", img: "https://assets.zeezest.com/images/PROD_ayodhya%20pahar_1704899966106_thumb_800.jpeg", x: 43, y: 73 },
-  { name: "Sandakhpu", img: "https://assets.zeezest.com/images/PROD_sandakphu_1704901003293_thumb_800.jpeg", x: 30, y: 74 },
-  { name: "Jaldapara National Park", img: "https://assets.zeezest.com/images/PROD_jaldapara%20national%20park_1704900855695_thumb_800.jpeg", x: 9, y: 73 },
+  { name: "Delhi", img: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&auto=format&fit=crop", x: 88, y: 22 },
+  { name: "Andaman", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop", x: 89, y: 68 },
+  { name: "Kashmir", img: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=800&auto=format&fit=crop", x: 76, y: 75 },
+  { name: "Kerala", img: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800&auto=format&fit=crop", x: 62, y: 75 },
+  { name: "Ayodha Pahar", img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&auto=format&fit=crop", x: 43, y: 73 },
+  { name: "Sandakhpu", img: "https://images.unsplash.com/photo-1522163182402-834f871fd851?w=800&auto=format&fit=crop", x: 30, y: 74 },
+  { name: "Jaldapara National Park", img: "https://images.unsplash.com/photo-1549643276-fdf2fab574f5?w=800&auto=format&fit=crop", x: 9, y: 73 },
 ];
 
 const DURATION_SECONDS = 26;

@@ -11,3 +11,9 @@ class AssistantRequest(BaseModel):
     visit_date: date
     interests: List[str] = []
     budget: Optional[str] = None
+
+class ChatRequest(BaseModel):
+    destination: str
+    query: str
+    visit_date: Optional[str] = None
+    chat_history: Optional[List[dict]] = []

@@ -21,6 +21,7 @@ const locationRoutes = require("./routes/location");
 const monumentRoutes = require("./routes/monumentroutes");
 const frameRoutes = require("./routes/frameroute");
 const emergencyrouter = require("./routes/emergencyroutes");
+const aiRouter = require("./routes/airoute");
 const { startCleanupScheduler } = require("./utils/cleanup");
 
 // Connect to Database & Cloudinary
@@ -88,6 +89,7 @@ app.use("/api/owner/hotel", ownerHotelRoutes);
 app.use("/api/monuments", monumentRoutes);
 app.use("/api/frames", frameRoutes);
 app.use("/api/emergency", emergencyrouter);
+app.use("/api/ai", aiRouter);
 
 
 // Convert coordinates to address using OpenStreetMap Nominatim reverse geocoding API
